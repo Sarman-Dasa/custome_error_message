@@ -2,7 +2,9 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use PhpParser\Node\Stmt\Return_;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -44,7 +46,15 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
+           
         });
+    }
+
+    public function render($request, Throwable $e)
+    {
+       if($e instanceof ModelNotFoundException)
+       {
+            return error(type:'notfound');
+       }
     }
 }
