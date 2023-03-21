@@ -39,22 +39,22 @@ if(!function_exists('error')){
         switch ($type) {
             case 'validation':
                 $status  = 422;
-                $message ?? 'Validation Failed please check the request attributes and try again';
+                $message =   $message ?? 'Validation Failed please check the request attributes and try again';
             break;
 
             case 'unauthenticated':
                 $status  = 401;
-                $message ?? 'User token has been expired';
+                $message =  $message ?? 'User token has been expired';
             break;
 
             case 'notfound':
                 $status  = 404;
-                $message ?? 'Sorry no results query for your request';
+                $message = $message ?? 'Sorry no results query for your request';
             break;
 
             case 'forbidden':
                 $status  = 403;
-                $message ??  'You don\'t have permission to access this content';
+                $message =  $message ??  'You don\'t have permission to access this content';
             break;
 
             default:
