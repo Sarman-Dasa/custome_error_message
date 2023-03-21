@@ -3,6 +3,8 @@
 use App\Http\Controllers\auth\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\CountryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -42,6 +44,16 @@ Route::controller(StateController::class)->prefix('state')->group(function(){
 });
 
 Route::controller(CityController::class)->prefix('city')->group(function(){
+    Route::post('list','list');
+    Route::get('get/{id}','get');
+});
+
+Route::controller(ShopController::class)->prefix('shop')->group(function(){
+    Route::post('list','list');
+    Route::get('get/{id}','get');
+});
+
+Route::controller(CustomerController::class)->prefix('customer')->group(function(){
     Route::post('list','list');
     Route::get('get/{id}','get');
 });
